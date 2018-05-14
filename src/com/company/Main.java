@@ -16,6 +16,7 @@ public class Main {
         Scanner value = new Scanner(System.in);
         String mirror = value.nextLine();
 
+
         char[] mir = mirror.toCharArray();
         System.out.print("Mirror: ");
         for (int i = mir.length - 1; i >= 0; i--) {
@@ -91,8 +92,8 @@ public class Main {
             if (max < intNum[i])
                 max = intNum[i];
         }
-        System.out.println("Минимльное число:" + min);
-        System.out.println("Максимальное число:" + max);
+        System.out.println("Minimal: " + min);
+        System.out.println("Maximal: " + max);
 
         /*6.3. Числа, которые делятся на 3 или на 9*/
         for (int i = 0; i < size; i++)
@@ -106,6 +107,7 @@ public class Main {
             if ((intNum[i] % 5 == 0) && (intNum[i] % 7 == 0))
                 System.out.println("Divided into 5 and/or 7 : " + intNum[i]);
     }
+
 
     /*6.5. Все трехзначные числа, в десятичной записи которых нет одинаковых цифр*/
 

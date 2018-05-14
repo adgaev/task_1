@@ -43,7 +43,11 @@ public class Main {
         System.out.println("Enter a password:");
         Scanner password = new Scanner(System.in);
         String pas = password.next();
-        if (pas.equals("123456")) {
+        System.out.println("Repeat password");
+        Scanner pasrepeat = new Scanner(System.in);
+        String rep = pasrepeat.next();
+
+        if (pas.equals(rep)) {
             System.out.println("Password is correct.");
         } else {
             System.out.println("Password is wrong!");
@@ -52,13 +56,13 @@ public class Main {
         /*5. Ввести целые числа как аргументы командной строки, подсчитать их суммы (произведения) и вывести результат на консоль*/
         System.out.println("Enter integers:");
         Scanner integer = new Scanner(System.in);
-        int a = integer.nextInt();
+        int f = integer.nextInt();
         int am = 0;
         int com = 1;
-        while (a != 0) {
-            am = am + a % 10;
-            com *= a % 10;
-            a = a / 10;
+        while (f != 0) {
+            am = am + f % 10;
+            com *= f % 10;
+            f = f / 10;
         }
         System.out.println("Integers amount = " + am);
         System.out.println("Integers composition = " + com);
@@ -106,13 +110,45 @@ public class Main {
         for (int i = 0; i < size; i++)
             if ((intNum[i] % 5 == 0) && (intNum[i] % 7 == 0))
                 System.out.println("Divided into 5 and/or 7 : " + intNum[i]);
+
+        /*6.5. Все трехзначные числа, в десятичной записи которых нет одинаковых цифр*/
+        int a = 0, b = 0, c = 0;
+        for (int x = 0; x < size; x++)
+            if ((intNum[x] > 99) && (intNum[x] < 1000)) {
+                a = intNum[x] / 10 / 10;
+                b = intNum[x] / 10 % 10;
+                c = intNum[x] % 100 % 10;
+                if (a != b && a != c && b != a && b != c && c != a && c != b) ;
+
+                System.out.println("3digit numbers, in the decimal notation of which there are no identical digits: " + intNum[x]);
+            }
+
+        /*6.6. «Счастливые» числа*/
+        int d = 0, e = 0;
+        for (int j = 0; j < size; j++)
+            if ((intNum[j] > 99999) && (intNum[j] < 1000000)) {
+
+                d = intNum[j] / 1000; // select the 1 half
+                e = intNum[j] % 1000; // select the 2 half
+
+                int sum1 = 0;
+                int sum2 = 0;
+                while (d == 0) {  //amount of the 1 half
+                    sum1 = sum1 + d % 10;
+                    d = d / 10;
+                }
+
+                while (e == 0) {  //amount of the 2 half
+                    sum1 = sum1 + e % 10;
+                    e = e / 10;
+                }
+
+                if (sum1 == sum2) {
+                    System.out.println("Lucky number: " + intNum[j]);
+                }
+            }
     }
-
-
-    /*6.5. Все трехзначные числа, в десятичной записи которых нет одинаковых цифр*/
-
 }
-
 
 
 

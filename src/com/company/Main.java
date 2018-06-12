@@ -17,26 +17,32 @@ public class Main {
         Scanner value = new Scanner(System.in);
         String mirror = value.nextLine();
 
-
         char[] mir = mirror.toCharArray();
         System.out.print("Mirror: ");
+
         for (int i = mir.length - 1; i >= 0; i--) {
-            System.out.print(mir[i] + "");
+            System.out.print(mir[i]);
         }
+
         /*        3. Вывести заданное количество случайных чисел с переходом и без перехода на новую строку*/
-        System.out.println("\n" + "Enter random number: ");
-        Scanner number = new Scanner(System.in);
-        String random = number.nextLine();
-        char[] ran = random.toCharArray();
+        System.out.println("\n"+"Enter numbers quantity: ");
+        Scanner quantity = new Scanner(System.in); // Объявляем Scanner
+        int k = quantity.nextInt();
+        int randoms[] = new int[k];
 
-        System.out.println("More than one row: ");
-        for (int i = 0; i < ran.length; i++) {
-            System.out.println(ran[i]);
+        for (int i = 0; i < randoms.length; i++) {
+            double random = Math.random();
+            randoms[i] = ((int) (random * k));
         }
-
-        System.out.println("One row: ");
-        for (int i = 0; i < ran.length; i++) {
-            System.out.print(ran[i]);
+        System.out.println("Numbers in one line:");
+        for (int i : randoms) {
+            String result = String.valueOf(randoms[i]);
+            System.out.print(result + " ");
+        }
+        System.out.println("\n" + "One number per 1 line:");
+        for (int i : randoms) {
+            String result = String.valueOf(randoms[i]);
+            System.out.println(result);
         }
 
         /*        4. Ввести пароль из командной строки и сравнить его со строкой-образцом*/
